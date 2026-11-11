@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>HTTP/1.1 RESTful API Client</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Pico.css: 깔끔한 웹 디자인 테마 -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+  <!-- PyScript: 브라우저에서 Python을 실행하는 엔진 -->
+  <script type="module" src="https://pyscript.net/releases/2024.3.2/core.js"></script>
+  <!-- Axios: HTTP 통신 라이브러리 -->
+  <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <main class="container">
+    <section id="header">
+      <h1>HTTP/1.1 RESTful API Example</h1>
+      <nav>
+        <ul>
+          <li><h4><strong id="program_status_1">Please wait, program is starting ...</strong></h4></li>
+        </ul>
+        <ul>
+          <li><a role="button" class="outline secondary" id="program_status_2">Initializing</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <section id="crud-forms">
+      <!-- 1. CREATE (POST) -->
+      <form>
+        <div class="grid">
+          <input type="text" placeholder="Key (예: apple)" id="key_create" required />
+          <input type="text" placeholder="Value (예: 1000)" id="value_create" required />
+          <button type="button" id="submit_create">CREATE (POST)</button>
+        </div>
+      </form>
+
+      <!-- 2. READ (GET) -->
+      <form>
+        <div class="grid">
+          <input type="text" placeholder="Key (예: apple)" id="key_read" required />
+          <input type="text" placeholder="{ Value 불필요 }" disabled />
+          <button type="button" id="submit_read">READ (GET)</button>
+        </div>
+      </form>
+
+      <!-- 3. UPDATE (PUT) -->
+      <form>
+        <div class="grid">
+          <input type="text" placeholder="Key (예: apple)" id="key_update" required />
+          <input type="text" placeholder="New Value (예: 2000)" id="value_update" required />
+          <button type="button" id="submit_update">UPDATE (PUT)</button>
+        </div>
+      </form>
+
+      <!-- 4. DELETE (DELETE) -->
+      <form>
+        <div class="grid">
+          <input type="text" placeholder="Key (예: apple)" id="key_delete" required />
+          <input type="text" placeholder="{ Value 불필요 }" disabled />
+          <button type="button" id="submit_delete">DELETE</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 요청/응답 결과 출력창 -->
+    <blockquote>
+      <p id="out_request">HTTP Request sent 👉 👉 👉</p>
+      <p id="out_response">HTTP Response received 👈 👈 👈</p>
+    </blockquote>
+  </main>
+
+  <!-- 브라우저에서 실행할 파이썬 코드 연결 -->
+  <script type="py" src="client.py" async></script>
+</body>
+</html>
